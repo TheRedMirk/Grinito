@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Art Gallery</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; }
+        img { width: 200px; margin: 10px; }
+    </style>
+</head>
+<body>
+    <h1>Art Gallery</h1>
+    <div id="gallery">
+        <script>
+            const images = [];
+            fetch('art_list.json')
+                .then(response => response.json())
+                .then(data => {
+                    data.forEach(art => {
+                        const img = document.createElement('img');
+                        img.src = art.url;
+                        document.getElementById('gallery').appendChild(img);
+                    });
+                });
+        </script>
+    </div>
+</body>
+</html>
